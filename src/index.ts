@@ -6,6 +6,8 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { schoolsRouter } from "./schools/schools.router";
+import { errorHandler } from "./middleware/error.middleware";
+import { notFoundHandler } from "./middleware/not-found.middleware";
 
 dotenv.config();
 /**
@@ -23,6 +25,8 @@ dotenv.config();
  app.use(cors());
  app.use(express.json());
  app.use("/api/schools", schoolsRouter);
+ app.use(errorHandler);
+ app.use(notFoundHandler);
 
 /**
  * Server Activation
