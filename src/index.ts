@@ -5,6 +5,7 @@ import * as dotenv from "dotenv"
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import { schoolsRouter } from "./schools/schools.router";
 
 dotenv.config();
 /**
@@ -21,6 +22,7 @@ dotenv.config();
  app.use(helmet());
  app.use(cors());
  app.use(express.json());
+ app.use("/api/schools", schoolsRouter);
 
 /**
  * Server Activation
